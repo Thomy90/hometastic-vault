@@ -1,0 +1,21 @@
+services:
+  vaultwarden:
+    image: "${IMAGE}"
+    container_name: "vaultwarden"
+    restart: "always"
+    networks:
+      - "reverse-proxy"
+    expose:
+      - "80"
+    volumes:
+      - "./data/:/data/"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.vaultwarden.rule=Host(`vault.home.tastic`)"
+      - "traefik.http.routers.vaultwarden.entrypoints=websecure"
+      - "diun.enable=true"
+      - "diun.include_tags=^1\\.\\d+\\.\\d+$"
+
+networks:
+  reverse-proxy:
+    external: true
