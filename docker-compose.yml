@@ -14,6 +14,11 @@ services:
       - "traefik.http.routers.vaultwarden.rule=Host(`vault.home.tastic`)"
       - "diun.enable=true"
       - "diun.include_tags=^1\\.\\d+\\.\\d+$"
+      - "homepage.group=Network & Security"
+      - "homepage.name=Vaultwarden"
+      - "homepage.icon=vaultwarden.png"
+      - "homepage.href=https://vault.home.tastic"
+      - "homepage.description=Password Manager"
 
 networks:
   reverse-proxy:
